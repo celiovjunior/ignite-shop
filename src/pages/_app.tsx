@@ -15,3 +15,6 @@ export default function App({ Component, pageProps }: AppProps) {
     </Container>
   )
 }
+
+// its possible to optimize image size/rendering on nextjs
+// see in the nextjs doc about 'next/image';
