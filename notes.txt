@@ -1,2 +1,6 @@
+OUTRAS LIBS USADAS:
+-- stitches (lembrar de configurar o getCssText no _document);
+
+
 -- rotas no nextjs já são configuradas automaticamente depenendo do diretório do arquivo físico, denominado 'file-system routing';
 -- para configurar fonts externas no projeto, é preciso setá-las em um documento chamado '_document', e usar as tags html do próprio next;
