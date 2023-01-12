@@ -1,10 +1,21 @@
 import 'keen-slider/keen-slider.min.css';
 import { useKeenSlider } from "keen-slider/react";
+import { GetServerSideProps } from 'next';
 import Image from "next/image";
-import tee1 from '../assets/shirt01.png';
+import Stripe from 'stripe';
+import { stripe } from '../lib/stripe';
 import { HomeContainer, Product } from "../styles/pages/home";
 
-export default function Home() {
+interface HomeProps {
+  products: {
+    id: string;
+    name: string;
+    imageUrl: string;
+    price: number;
+  }[]
+}
+
+export default function Home({ products }: HomeProps) {
   const [sliderRef] = useKeenSlider({
     slides: {
       perView: 3,
@@ -14,45 +25,48 @@ export default function Home() {
 
   return (
     <HomeContainer ref={sliderRef} className="keen-slider">
-      <Product className="keen-slider__slide">
-        <Image src={tee1.src} width={520} height={480} alt={""} />
 
-        <footer>
-          <strong>T-Shirt X</strong>
-          <span>US$ 35.29</span>
-        </footer>
-      </Product>
-
-      <Product className="keen-slider__slide">
-        <Image src={tee1.src} width={520} height={480} alt={""} />
-
-        <footer>
-          <strong>T-Shirt X</strong>
-          <span>US$ 35.29</span>
-        </footer>
-      </Product>
-
-      <Product className="keen-slider__slide">
-        <Image src={tee1.src} width={520} height={480} alt={""} />
-
-        <footer>
-          <strong>T-Shirt X</strong>
-          <span>US$ 35.29</span>
-        </footer>
-      </Product>
+      {
+        products.map(product => {
+          return(
+            <Product key={product.id} className="keen-slider__slide">
+              <Image src={product.imageUrl} width={520} height={480} alt={""} />
       
-      <Product className="keen-slider__slide">
-        <Image src={tee1.src} width={520} height={480} alt={""} />
+              <footer>
+                <strong>{product.name}</strong>
+                <span>{product.price}</span>
+              </footer>
+            </Product>
+          )
+        })
+      }
 
-        <footer>
-          <strong>T-Shirt X</strong>
-          <span>US$ 35.29</span>
-        </footer>
-      </Product>
+
       
     </HomeContainer>
   )
 }
 
-// file-system routing
-// roteamento baseado em arquivos fisicos
+// chamada api do stripe
+export const getServerSideProps: GetServerSideProps = async() => {
+  const response = await stripe.products.list({
+    expand: ['data.default_price']
+  })
+ 
+  const products = response.data.map(item => {
+    const price = item.default_price as Stripe.Price
+
+    return {
+      id: item.id,
+      name: item.name,
+      imageUrl: item.images[0],
+      price: price.unit_amount
+    }
+  })
+
+  return {
+    props: {
+      products
+    }
+  } 
+}
