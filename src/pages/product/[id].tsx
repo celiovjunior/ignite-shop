@@ -22,6 +22,10 @@ export default function Product({ product }: ProductProps) {
   // if (isFallback) {
   //   return <p>Loading...</p>
   // }
+
+  function handleBuyProduct() {
+    console.log(product.defaultPriceId)
+  }
   
   return(
     <ProductContainer>
@@ -36,7 +40,7 @@ export default function Product({ product }: ProductProps) {
 
         <p>{product.description}</p>
 
-        <button>
+        <button onClick={handleBuyProduct}>
           Buy now
         </button>
         

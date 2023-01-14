@@ -2,8 +2,8 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { stripe } from "../../lib/stripe";
 
-export default async function hanlder(req: NextApiRequest, res: NextApiResponse) {
-  const priceId = '';
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  const priceId = 'price_1MPCNfHu4JQpn5UnPE6j5Ydx';
 
   const successUrl = `${process.env.NEXT_URL}/success`;
   const cancelUrl = `${process.env.NEXT_URL}/`;
@@ -18,5 +18,9 @@ export default async function hanlder(req: NextApiRequest, res: NextApiResponse)
         quantity: 1,
       }
     ],
+  })
+
+  return res.status(201).json({
+    checkoutUrl: checkoutSession.url
   })
 }
