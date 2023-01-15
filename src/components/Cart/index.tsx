@@ -2,7 +2,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 import Image from "next/image";
 import { X } from "phosphor-react";
 import { CartButton } from "../CartButton";
-import { CartClose, CartContent, CartProduct, CartProductImage } from "./styles";
+import { CartClose, CartContent, CartFinalization, CartProduct, CartProductDetails, CartProductImage, FinalizationDetails } from "./styles";
 
 export function Cart() {
   return(
@@ -25,14 +25,35 @@ export function Cart() {
             <CartProduct>
               <CartProductImage>
                 <Image
-                  src="http://localhost:3000/_next/image?url=https%3A%2F%2Ffiles.stripe.com%2Flinks%2FMDB8YWNjdF8xTVBDSGZIdTRKUXBuNVVufGZsX3Rlc3RfbERpOUFyWUdVNVFNbzMzUjYzTDNiSjdM00gXUzbg37&w=640&q=75"
+                  src=""
                   width={100}
                   height={93}
                   alt=""
                 />
               </CartProductImage>
+              <CartProductDetails>
+                <p>Produto 1</p>
+                <strong>R$ 50,00</strong>
+                <button>Remover</button>
+              </CartProductDetails>
             </CartProduct>
           </section>
+
+          <CartFinalization>
+
+            <FinalizationDetails>
+              <div>
+                <span>Quantidade</span>
+                <p>2 itens</p>
+              </div>  
+              <div>
+                <span>Valor total</span>
+                <p>R$ 100,00</p>
+              </div>
+            </FinalizationDetails>
+            
+            <button>Finalizar compra</button>
+          </CartFinalization>
 
         </CartContent>
       </Dialog.Portal>
