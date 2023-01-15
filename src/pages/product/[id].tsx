@@ -1,5 +1,6 @@
 import axios from "axios"
 import { GetStaticPaths, GetStaticProps } from "next"
+import Head from "next/head"
 import Image from "next/image"
 import { useState } from "react"
 // import { useRouter } from "next/router"
@@ -46,24 +47,29 @@ export default function Product({ product }: ProductProps) {
   }
   
   return(
-    <ProductContainer>
+    <>
+      <Head>
+        <title>{product.name} | Ignite Shop</title>
+      </Head>
+      <ProductContainer>
 
-      <ImageContainer>
-        <Image src={product.imageUrl} width={520} height={480} alt="" />
-      </ImageContainer>
+        <ImageContainer>
+          <Image src={product.imageUrl} width={520} height={480} alt="" />
+        </ImageContainer>
 
-      <ProductDetails>
-        <h1>{product.name}</h1>
-        <span>{product.price}</span>
+        <ProductDetails>
+          <h1>{product.name}</h1>
+          <span>{product.price}</span>
 
-        <p>{product.description}</p>
+          <p>{product.description}</p>
 
-        <button disabled={isCreatingCheckoutSession} onClick={handleBuyProduct}>
-          Buy now
-        </button>
-        
-      </ProductDetails>
-    </ProductContainer>
+          <button disabled={isCreatingCheckoutSession} onClick={handleBuyProduct}>
+            Compre agora
+          </button>
+          
+        </ProductDetails>
+      </ProductContainer>
+    </>
   )
 }
 
@@ -95,9 +101,9 @@ export const getStaticProps: GetStaticProps<any, { id: string }> = async({ param
         id: product.id,
         name: product.name,
         imageUrl: product.images[0],
-        price: new Intl.NumberFormat('en-US', {
+        price: new Intl.NumberFormat('pt-BR', {
           style: 'currency',
-          currency: 'USD'
+          currency: 'BRL'
         }).format(price.unit_amount! / 100),
         description: product.description,
         defaultPriceId: price.id

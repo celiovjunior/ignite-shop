@@ -1,6 +1,7 @@
 import 'keen-slider/keen-slider.min.css';
 import { useKeenSlider } from "keen-slider/react";
 import { GetStaticProps } from 'next';
+import Head from 'next/head';
 import Image from "next/image";
 import Link from 'next/link';
 import Stripe from 'stripe';
@@ -25,27 +26,33 @@ export default function Home({ products }: HomeProps) {
   })
 
   return (
-    <HomeContainer ref={sliderRef} className="keen-slider">
+    <>
+      <Head>
+        <title>Home | Ignite Shop</title>
+      </Head>
+      
+      <HomeContainer ref={sliderRef} className="keen-slider">
 
-      {
-        products.map(product => {
-          return(
-            // prefetch={false} pode consumir muitos recursos do server em caso de ter muitos Links na tela
-            <Link prefetch={false} href={`/product/${product.id}`} key={product.id}>
-              <Product className="keen-slider__slide">
-                <Image src={product.imageUrl} width={520} height={480} alt={""} />
-        
-                <footer>
-                  <strong>{product.name}</strong>
-                  <span>{product.price}</span>
-                </footer>
-              </Product>
-            </Link>
-          )
-        })
-      }
-            
-    </HomeContainer>
+        {
+          products.map(product => {
+            return(
+              // prefetch={false} pode consumir muitos recursos do server em caso de ter muitos Links na tela
+              <Link prefetch={false} href={`/product/${product.id}`} key={product.id}>
+                <Product className="keen-slider__slide">
+                  <Image src={product.imageUrl} width={520} height={480} alt={""} />
+          
+                  <footer>
+                    <strong>{product.name}</strong>
+                    <span>{product.price}</span>
+                  </footer>
+                </Product>
+              </Link>
+            )
+          })
+        }
+              
+      </HomeContainer>
+    </>
   )
 }
 
@@ -62,9 +69,9 @@ export const getStaticProps: GetStaticProps = async() => {
       id: item.id,
       name: item.name,
       imageUrl: item.images[0],
-      price: new Intl.NumberFormat('en-US', {
+      price: new Intl.NumberFormat('pt-BR', {
         style: 'currency',
-        currency: 'USD'
+        currency: 'BRL'
       }).format(price.unit_amount! / 100)
     }
   })
