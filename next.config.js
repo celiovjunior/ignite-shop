@@ -4,7 +4,15 @@ const nextConfig = {
   images: {
     domains: [
       "files.stripe.com"
-    ]
+    ],
+    remotePatterns: [
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '3000',
+        pathname: '/account123/**',
+      },
+    ],
   }
 }
 
