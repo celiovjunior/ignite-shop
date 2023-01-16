@@ -1,25 +1,69 @@
 import { styled } from "../../styles";
 
-export const CartButtonContainer = styled('button', {
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  border: 'none',
+export const CartButtonContainer = styled("button", {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  padding: '.75rem',
+  border: "none",
   borderRadius: 6,
-  position: 'relative',
+  position: "relative",
 
-  '&:disbaled': {
+  "&:disabled": {
     opacity: 0.6,
-    cursor: 'not-allowed'
+    cursor: "not-allowed",
   },
 
-  background: '$gray800',
-  color: '$gray500',
+  span: {
+    background: "$green500",
+    color: "$white",
+    borderRadius: "50%",
+    width: "1.5rem",
+    height: "1.5rem",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    fontSize: "0.875rem",
+    fontWeight: "bold",
+    position: "absolute",
+    top: "calc(-1.5rem / 2)",
+    right: "calc(-1.5rem / 2)",
+    outline: "3px solid $gray900",
+  },
 
-  width: '3rem',
-  height: '3rem',
+  variants: {
+    color: {
+      gray: {
+        background: "$gray800",
+        color: "$gray500",
+      },
+      green: {
+        background: "$green500",
+        color: "$white",
 
-  svg: {
-    fontSize: 24
-  }
-})
+        "&:not(:disabled):hover": {
+          backgroundColor: "$green300",
+        },
+      },
+    },
+    size: {
+      medium: {
+        width: "3rem",
+        height: "3rem",
+      },
+      large: {
+        width: "3.5rem",
+        height: "3.5rem",
+
+        svg: {
+          fontSize: 32,
+        },
+      },
+    },
+  },
+
+  defaultVariants: {
+    color: "gray",
+    size: "medium",
+  },
+});
