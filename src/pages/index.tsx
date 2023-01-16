@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { MouseEvent } from 'react';
 import Stripe from 'stripe';
 import { CartButton } from '../components/CartButton';
-import { IProduct } from '../contexts/CardContent';
+import { IProduct } from '../contexts/CartContent';
 import { useCart } from '../hooks/useCart';
 import { stripe } from '../lib/stripe';
 import { HomeContainer, Product } from "../styles/pages/home";
