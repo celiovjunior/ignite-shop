@@ -43,7 +43,7 @@ export default function Home({ products }: HomeProps) {
           products.map(product => {
             return(
               // prefetch={false} pode consumir muitos recursos do server em caso de ter muitos Links na tela
-              <Link prefetch={false} href={`/product/${product.id}`} key={product.id}>
+              <Link href={`/product/${product.id}`} key={product.id}>
                 <Product className="keen-slider__slide">
                   <Image src={product.imageUrl} width={520} height={480} alt={""} />
           
