@@ -4,9 +4,10 @@ import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import Image from "next/image";
 import Link from 'next/link';
-import { MouseEvent } from 'react';
+import { MouseEvent, useEffect, useState } from 'react';
 import Stripe from 'stripe';
 import { CartButton } from '../components/CartButton';
+import Skeleton from '../components/Skelethon';
 import { IProduct } from '../contexts/CartContent';
 import { useCart } from '../hooks/useCart';
 import { stripe } from '../lib/stripe';
@@ -17,12 +18,19 @@ interface HomeProps {
 }
 
 export default function Home({ products }: HomeProps) {
+  const [isLoading, setIsLoading] = useState(true)
   const [sliderRef] = useKeenSlider({
     slides: {
       perView: 3,
       spacing: 48,
     }
   })
+
+  // fake loading
+  useEffect(() => {
+    const timeOut = setTimeout(() => setIsLoading(false), 1000)
+    return () => clearTimeout(timeOut)
+  }, [])
 
   const { addToCart, checkIfItemAlreadyExists } = useCart()
 
@@ -36,32 +44,41 @@ export default function Home({ products }: HomeProps) {
       <Head>
         <title>Home | Ignite Shop</title>
       </Head>
-      
       <HomeContainer ref={sliderRef} className="keen-slider">
-
         {
-          products.map(product => {
-            return(
-              // prefetch={false} pode consumir muitos recursos do server em caso de ter muitos Links na tela
-              <Link href={`/product/${product.id}`} key={product.id}>
-                <Product className="keen-slider__slide">
-                  <Image src={product.imageUrl} width={520} height={480} alt={""} />
-          
-                  <footer>
-                    <div>
-                      <strong>{product.name}</strong>
-                      <span>{product.price}</span>
-                    </div>
-                    <CartButton disabled={checkIfItemAlreadyExists(product.id)} color="green" size="large" onClick={(e) => handleAddToCart(e, product)} />
-                  </footer>
-                  
-                </Product>
-              </Link>
-            )
-          })
+          isLoading ? (
+            <>
+              <Skeleton className='keen-slider__slide' />
+              <Skeleton className='keen-slider__slide' />
+              <Skeleton className='keen-slider__slide' />
+            </>
+          ) : (
+            <>
+              {
+                products.map(product => {
+                  return(
+                    // prefetch={false} pode consumir muitos recursos do server em caso de ter muitos Links na tela
+                    <Link href={`/product/${product.id}`} key={product.id}>
+                      <Product className="keen-slider__slide">
+                        <Image src={product.imageUrl} width={520} height={480} alt={""} />
+                
+                        <footer>
+                          <div>
+                            <strong>{product.name}</strong>
+                            <span>{product.price}</span>
+                          </div>
+                          <CartButton disabled={checkIfItemAlreadyExists(product.id)} color="green" size="large" onClick={(e) => handleAddToCart(e, product)} />
+                        </footer>
+                        
+                      </Product>
+                    </Link>
+                  )
+                })
+              }
+            </>
+          )
         }
-              
-      </HomeContainer>
+      </HomeContainer>     
     </>
   )
 }
