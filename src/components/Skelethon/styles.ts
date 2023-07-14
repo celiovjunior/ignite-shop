@@ -8,6 +8,7 @@ const skeletonAnimation = keyframes({
     backgroundPosition: 'calc(200px + 100%) 0',
   }
 })
+
 export const SkeletonContainer = styled('div', {
   width: '100%',
   maxWidth: '500px',
