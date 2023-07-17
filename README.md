@@ -1,53 +1,76 @@
-Ignite Shop
+<h1 align="center">👕 Ignite Shop 👕</h1>
 
-(doc in PT-BR)
+## About:
+T-shirt e-commerce built with NextJS and Tailwind, consuming API with registered data in the Stripe platform<br>
 
-Aplicação web front-end
+Front-end web application<br>
 
-Sobre:
-Loja virtual de blusas feito com NextJS e Tailwind, consumindo API com dados cadastrados na plataforma Stripe.
+### Homepage:
+![homepage](ecommerceHome.png)
 
-Apicação feita duranto o bootcamp Ignite, oferecido pela escola online de programação Rocketseat.
+### Item details:
+![item details](ecommerceItemDetail.png)
 
-Ações do usuário:
-- Pode ver todos os produtos;
-- Pode ver detalhes de um único produto, como preço e descrição;
-- Pode adicionar produto no carrinho a partir da lista de produtos;
-- Pode adicionar produto no carrinho a partir da tela de detalhes do produto;
-- Pode ver lista de produtos adicionados no carrinho;
-- Pode finalizar compra;
+### Cart modal:
+![cart modal page](ecommerceCart.png)
 
-Principais ferramentas:
-- NextJS (v13);
-- Typescript (v4.6);
-- Styled-components;
-- Stripe;
+## Main tools:
 
-Gerenciador de pacote:
-- npm (v9.5);
+- [NextJS](https://nextjs.org/) ```(v13)```;
+- [Typescript](https://www.typescriptlang.org/docs/) ```(v4.6)```;
+- [Axios](https://axios-http.com/) ```(v1.2)```;
+- [Stripe](https://stripe.com/) ```(v11.6)```;
 
-Instalação local:
+## User actions:
+- Can see a list of products;
+- Can see more details about each item, as price and description;
+- Can add a product to the cart by the homepage;
+- Can add a product to the cart by the details page;
+- Can see a list of products already in the cart;
+- Can complete the payment through Stripe's API;
 
-Antes da instalação:
+## Package manager:
+- [npm](https://www.npmjs.com/) ```(v9.5)```;
 
-Para rodar o projeto localmente, certifique-se de que você tenha o Node e o GIT instalando na sua máquina
-- Node
-- GIT
+## Running locally:
 
-1. Abra o terminal de sua preferência.
+> Before installing the project, certificates that you have [Node](https://nodejs.org/en) and [GIT](https://git-scm.com/) installed in your PC.
 
-2. Execute os seguintes comandos:
+1. Open your teminal.
 
-Clone o repositório:
+2. Execute the following command:
+
+```shell
+# clone the repository:
 git clone git@github.com:celiovjunior/ignite-shop.git
 
-Entre no diretório raiz do projeto:
+# go to the project directory:
 cd ignite-shop
 
-Instale os pacotes necessários:
+# install necessary dependencies:
 npm install
 
-Execute o projeto:
-npm run dev
+# open the project folder:
+explorer.exe .
+```
 
-A aplicação irá iniciar na porta http://localhost:3000
+3. Copy and paste the ```.env.sample``` file in the same directory;
+
+4. Rename the new file with ```.env```;
+
+5. Paste your Stripe's credential, like the example below:
+
+```js
+NEXT_PUBLIC_STRIPE_SECRET_KEY=your credential here
+NEXT_URL=http://localhost:3000
+```
+
+6. Save the file;
+
+7. Run the following command:
+
+```shell
+npm run dev
+```
+
+Web application will run at http://localhost:3000
