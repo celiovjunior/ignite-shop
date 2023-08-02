@@ -6,13 +6,13 @@ T-shirt e-commerce built with NextJS and Tailwind, consuming API with registered
 Front-end web application<br>
 
 ### Homepage:
-![homepage](ecommerceHome.png)
+![homepage](home-preview.png)
 
 ### Item details:
-![item details](ecommerceItemDetail.png)
+![item details](item-preview.png)
 
 ### Cart modal:
-![cart modal page](ecommerceCart.png)
+![cart modal page](cart-popover.png)
 
 ## Main tools:
 
@@ -60,8 +60,8 @@ explorer.exe .
 
 5. Paste your Stripe's credential, like the example below:
 
-```js
-NEXT_PUBLIC_STRIPE_SECRET_KEY=your credential here
+```bash
+NEXT_PUBLIC_STRIPE_SECRET_KEY= # stripe's credential
 NEXT_URL=http://localhost:3000
 ```
 
