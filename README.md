@@ -1,4 +1,4 @@
-<h1 align="center">👕 Ignite Shop 👕</h1>
+<h1>Ignite Shop</h1>
 
 ## About:
 T-shirt e-commerce built with NextJS and Tailwind, consuming API with registered data in the Stripe platform<br>
