@@ -1,9 +1,7 @@
 <h1>Ignite Shop</h1>
 
 ## About:
-T-shirt e-commerce built with NextJS and Tailwind, consuming API with registered data in the Stripe platform<br>
-
-Front-end web application<br>
+Front-end web app of an e-commerce built with NextJS and Tailwind, consuming API with registered data in the Stripe platform, integrated with check-out feature.<br>
 
 ### Homepage:
 ![homepage](home-preview.png)
@@ -61,8 +59,10 @@ explorer.exe .
 5. Paste your Stripe's credential, like the example below:
 
 ```bash
-NEXT_PUBLIC_STRIPE_SECRET_KEY= # stripe's credential
-NEXT_URL=http://localhost:3000
+# Stripe's credentials
+NEXT_PUBLIC_STRIPE_SECRET_KEY=
+# Local running URL
+NEXT_URL=
 ```
 
 6. Save the file;
