@@ -1,9 +1,8 @@
-<h1 align="center">👕 Ignite Shop 👕</h1>
+<h1>Ignite Shop</h1>
 
 ## About:
-T-shirt e-commerce built with NextJS and Tailwind, consuming API with registered data in the Stripe platform<br>
+T-shirt e-commerce built with NextJS and Tailwind, consuming API with registered data (in Brazilian currency BRL) in the Stripe platform.<br>
 
-Front-end web application<br>
 
 ### Homepage:
 ![homepage](home-preview.png)
@@ -56,13 +55,16 @@ explorer.exe .
 
 3. Copy and paste the ```.env.sample``` file in the same directory;
 
-4. Rename the new file with ```.env```;
+4. Rename the new file with just ```.env```;
 
 5. Paste your Stripe's credential, like the example below:
 
 ```bash
-NEXT_PUBLIC_STRIPE_SECRET_KEY= # stripe's credential
-NEXT_URL=http://localhost:3000
+# Stripe's credential
+NEXT_PUBLIC_STRIPE_SECRET_KEY=
+
+# Localhost url
+NEXT_URL=
 ```
 
 6. Save the file;
