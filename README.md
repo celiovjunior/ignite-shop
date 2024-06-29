@@ -1,12 +1,7 @@
 <h1>Ignite Shop</h1>
 
 ## About:
-<<<<<<< HEAD
-T-shirt e-commerce built with NextJS and Tailwind, consuming API with registered data (in Brazilian currency BRL) in the Stripe platform.<br>
-
-=======
 Front-end web app of an e-commerce built with NextJS and Tailwind, consuming API with registered data in the Stripe platform, integrated with check-out feature.<br>
->>>>>>> 8df9fde0d15f2f88f56480ef37c6903feff83354
 
 ### Homepage:
 ![homepage](home-preview.png)
