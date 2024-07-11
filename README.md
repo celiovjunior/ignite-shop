@@ -59,16 +59,16 @@ explorer.exe .
 5. Paste your Stripe's credential, like the example below:
 
 ```bash
-<<<<<<< HEAD
 # Stripe's credential
 NEXT_PUBLIC_STRIPE_SECRET_KEY=
 
 # Localhost url
-=======
+http://localhost:3000
+
 # Stripe's credentials
 NEXT_PUBLIC_STRIPE_SECRET_KEY=
+
 # Local running URL
->>>>>>> 8df9fde0d15f2f88f56480ef37c6903feff83354
 NEXT_URL=
 ```
 
